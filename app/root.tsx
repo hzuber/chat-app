@@ -5,24 +5,15 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
-
-import "./tailwind.css";
-
-export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
-];
+import { NavBar } from "./components/NavBar/NavBar";
+import Footer from "./components/Footer/Footer";
+import "./root.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { SocketProvider } from "~/contexts/SocketContext";
+import { UserProvider } from "~/contexts/UserContext";
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  console.log("layout loads");
   return (
     <html lang="en">
       <head>
@@ -41,5 +32,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  console.log("app loads");
+  return (
+    <SocketProvider>
+      <UserProvider>
+        <div className="layout_container justify-content-between d-flex flex-column w-100">
+          <NavBar />
+          <div className="layout_container--inner">
+            <Outlet />
+          </div>
+          <Footer />
+        </div>
+      </UserProvider>
+    </SocketProvider>
+  );
 }

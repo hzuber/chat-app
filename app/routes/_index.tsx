@@ -1,4 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
+import { useState, useEffect } from "react";
+import { Socket } from "socket.io-client";
+import { useSocket } from "~/contexts/SocketContext";
 
 export const meta: MetaFunction = () => {
   return [
@@ -6,8 +9,40 @@ export const meta: MetaFunction = () => {
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
+interface Messages {
+  username: string;
+  text: string;
+}
 
 export default function Index() {
+  console.log("index loads");
+  const { socket: contextSocket } = useSocket();
+  const [socket, setSocket] = useState<Socket | null>();
+  const [messages, setMessages] = useState<Messages[]>([]);
+  const [messageText, setMessageText] = useState("");
+
+  useEffect(() => {
+    console.log("use effect");
+  }, []);
+
+  useEffect(() => {
+    setSocket(contextSocket);
+    if (socket) {
+      socket.on("confirmation", (data) => {
+        console.log(data);
+      });
+      socket.on("message", (message) => {
+        console.log(message);
+        setMessages([...messages, message]);
+      });
+    }
+  }, [contextSocket, messages, socket]);
+
+  const sendMessage = () => {
+    console.log("messageText", messageText);
+    socket?.emit("message", { text: messageText, username: "Me" });
+    setMessageText(messageText);
+  };
   return (
     <div className="flex h-screen items-center justify-center">
       <div className="flex flex-col items-center gap-16">
@@ -28,6 +63,24 @@ export default function Index() {
             />
           </div>
         </header>
+        <div className="messages">
+          {messages.map((message, index) => (
+            <p key={index}>
+              username: {message.username} <br /> text={message.text}
+            </p>
+          ))}
+        </div>
+        <div className="input-box">
+          <input
+            type="text"
+            value={messageText}
+            onChange={(e) => {
+              setMessageText(e.target.value), console.log("click");
+            }}
+            placeholder="Type your message..."
+          />
+          <button onClick={() => sendMessage()}>Send</button>
+        </div>
         <nav className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
           <p className="leading-6 text-gray-700 dark:text-gray-200">
             What&apos;s next?

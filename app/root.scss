@@ -1,0 +1,23 @@
+
+$primary: yellow;
+$secondary:#d625a1;
+$danger: #ff4136;
+// Create your own map
+$custom-colors: (
+  "custom-color": #900
+);
+
+
+body{
+    min-height:100vh;
+    display:flex;
+    align-items:stretch;
+    margin:0;
+    >div{
+        width:100%;
+    }
+.layout_container{
+    &--inner{
+        padding: 5%
+    }
+}}
