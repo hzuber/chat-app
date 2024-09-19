@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
-    "dev": "node ./server.js",
+    "dev": "nodemon --watch './**/*.ts' --exec npx tsx ./server.ts",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "start": "cross-env NODE_ENV=production node ./server.js",
+    "start": "cross-env NODE_ENV=production ts-node ./server.ts",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -22,7 +22,10 @@
     "express": "^4.18.2",
     "isbot": "^4.1.0",
     "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "morgan": "^1.10.0",
+    "node-ts": "^6.1.2",
+    "nodemon": "^3.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "socket.io": "^4.7.5",
@@ -47,6 +50,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "sass-embedded": "^1.79.1",
+    "tsx": "^4.19.1",
     "typescript": "^5.1.6",
     "vite": "^5.1.0",
     "vite-tsconfig-paths": "^4.2.1"

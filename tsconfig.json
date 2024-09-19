@@ -2,12 +2,13 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    "./**/*.ts",
     "**/.server/**/*.ts",
     "**/.server/**/*.tsx",
     "**/.client/**/*.ts",
     "**/.client/**/*.tsx",
-    "app/database/db.js",
-    "server.js"
+    "app/server/users/utils.ts",
+    "server.ts"
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],

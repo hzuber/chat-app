@@ -5,12 +5,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { NavBar } from "./components/NavBar/NavBar";
-import Footer from "./components/Footer/Footer";
 import "./root.scss";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { SocketProvider } from "~/contexts/SocketContext";
 import { UserProvider } from "~/contexts/UserContext";
+import { Suspense } from "react";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   console.log("layout loads");
@@ -31,19 +29,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+const Loading = () => {
+  return <p> loading </p>;
+};
+
 export default function App() {
   console.log("app loads");
   return (
-    <SocketProvider>
-      <UserProvider>
-        <div className="layout_container justify-content-between d-flex flex-column w-100">
-          <NavBar />
-          <div className="layout_container--inner">
-            <Outlet />
-          </div>
-          <Footer />
-        </div>
-      </UserProvider>
-    </SocketProvider>
+    <Suspense fallback={<Loading />}>
+      <SocketProvider>
+        <UserProvider>
+          <Outlet />
+        </UserProvider>
+      </SocketProvider>
+    </Suspense>
   );
 }

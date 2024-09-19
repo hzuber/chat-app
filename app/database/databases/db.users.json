@@ -1,7 +1,0 @@
-[
-    { "id": 1, "username": "Alice", "email": "alice@example.com", "password": "$2a$12$kOp.nqBG2GPwfDwGSkHfPOUdGQkVhpP.lyqjnnW4JsI0drhW.IeGq",
-    "icon": null},
-    { "id": 2, "username": "Bob", "email": "bob@example.com", "password": "$2a$12$kOp.nqBG2GPwfDwGSkHfPOUdGQkVhpP.lyqjnnW4JsI0drhW.IeGq",
-    "icon": null }
-
-]

@@ -6,6 +6,13 @@ export type User = {
   icon: string | null;
 };
 
+export type CreateUser = {
+  username: string;
+  email: string;
+  password: string;
+  icon: string | null;
+};
+
 export type Message = {
   id: string;
   userId: string;
@@ -19,4 +26,10 @@ export type Room = {
   members: string[] | null;
   icon: string | null;
   description: string | null;
+};
+
+export type UserResponse = {
+  user: User;
+  status: number;
+  token: string;
 };
