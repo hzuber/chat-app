@@ -7,7 +7,7 @@
     "**/.server/**/*.tsx",
     "**/.client/**/*.ts",
     "**/.client/**/*.tsx",
-    "app/server/users/utils.ts",
+    "server/users/utils.ts",
     "server.ts"
   ],
   "compilerOptions": {

@@ -39,5 +39,12 @@
     "password": "$2a$10$hkrHhWf.Ih35Drkq0HkuNesGghJ653SgmYNoK.CcZm/3ECY1hERt2",
     "icon": null,
     "id": "6"
+  },
+  {
+    "username": "me",
+    "email": "me@me",
+    "password": "$2a$10$QnpPQwXfOiDb9V6gwW6odOa9zUIkSMELNdwnlnVZVdkd9ESVq6ViW",
+    "icon": null,
+    "id": "7"
   }
 ]

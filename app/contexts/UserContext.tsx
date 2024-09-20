@@ -54,8 +54,8 @@ export const UserProvider = ({ children }: Props) => {
           return;
         }
       });
-    } else if (!isPublicRoute(location.pathname)) {
-      navigate("/login");
+    } else {
+      location.pathname !== "/signup" && navigate("/login");
     }
   }, [navigate, location.pathname]);
 

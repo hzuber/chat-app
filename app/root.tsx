@@ -1,3 +1,4 @@
+import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
   Meta,
@@ -5,13 +6,15 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import "./root.scss";
 import { SocketProvider } from "~/contexts/SocketContext";
 import { UserProvider } from "~/contexts/UserContext";
 import { Suspense } from "react";
 
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: "/app/root.css" },
+];
+
 export function Layout({ children }: { children: React.ReactNode }) {
-  console.log("layout loads");
   return (
     <html lang="en">
       <head>

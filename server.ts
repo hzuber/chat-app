@@ -8,26 +8,26 @@ import bodyParser from "body-parser";
 import { Server } from "socket.io";
 import path from "path";
 import createSocketServer from "./socket-io.js";
-import userRoutes from "./app/server/users/routers.js";
-import authRoutes from "./app/server/auth/routers.js";
+import userRoutes from "./server/users/routers.js";
+import authRoutes from "./server/auth/routers.js";
 
 configDotenv();
 
 (async () => {
   const viteDevServer =
-    //   import.meta.env.VITE_NODE_ENV === "production"
-    //     ? undefined
-    //     : await import("vite").then((vite) =>
-    //         vite.createServer({
-    //           server: { middlewareMode: true },
-    //         })
-    //       );
+    process.env.VITE_NODE_ENV === "production"
+      ? undefined
+      : await import("vite").then((vite) =>
+          vite.createServer({
+            server: { middlewareMode: true },
+          })
+        );
 
-    await import("vite").then((vite) =>
-      vite.createServer({
-        server: { middlewareMode: true },
-      })
-    );
+  // await import("vite").then((vite) =>
+  //   vite.createServer({
+  //     server: { middlewareMode: true },
+  //   })
+  // );
 
   const remixHandler = createRequestHandler({
     build: viteDevServer

@@ -19,6 +19,7 @@ export type Message = {
   date: Date;
   roomId: string;
   read: boolean | null;
+  message: string;
 };
 
 export type Room = {

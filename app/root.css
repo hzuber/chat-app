@@ -1,0 +1,14 @@
+
+
+body{
+    min-height:100vh;
+    display:flex;
+    align-items:stretch;
+    margin:0;
+}
+   body >div{
+        width:100%;
+    }
+.layout_container--inner{
+        padding: 5%
+    }
