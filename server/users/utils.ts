@@ -35,7 +35,8 @@ async function writeDB(user: User) {
 
 // Get all records
 export async function getAll() {
-  return await readDB();
+  const users: User[] = await readDB();
+  return users;
 }
 
 // Get a record by ID

@@ -5,6 +5,8 @@
     "./**/*.ts",
     "**/.server/**/*.ts",
     "**/.server/**/*.tsx",
+    "server/**/*.ts",
+    "server/**/*.tsx",
     "**/.client/**/*.ts",
     "**/.client/**/*.tsx",
     "server/users/utils.ts",

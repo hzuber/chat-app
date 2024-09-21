@@ -22,11 +22,10 @@ router.post("/register", async (req, res) => {
     return res.status(400).json({ error: "Email is already in use" });
   }
 
-  const hashedPassword = await bcrypt.hash(password, 10);
   const user = await create({
     username,
     email,
-    password: hashedPassword,
+    password,
     icon: null,
   }).then((res) => res.user);
   console.log("reg", user);

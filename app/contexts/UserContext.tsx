@@ -37,13 +37,10 @@ export const UserProvider = ({ children }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log("useeffect");
     const token = localStorage.getItem("token");
-    console.log("useeffect token", localStorage, token);
     if (token) {
       validateToken().then((userData) => {
         if (userData) {
-          console.log("useeffect", userData);
           setIsLoading(false);
           setUser(userData);
         } else {
@@ -60,7 +57,6 @@ export const UserProvider = ({ children }: Props) => {
   }, [navigate, location.pathname]);
 
   const login = (userData: User, token: string) => {
-    console.log("login function", userData, token);
     setUser(userData);
     localStorage.setItem("token", token);
     navigate("/");

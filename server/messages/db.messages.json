@@ -1,3 +1,32 @@
 [
-    
+  {
+    "date": 1726833803808,
+    "userId": "7",
+    "chatId": "1",
+    "read": false,
+    "message": "hey ther",
+    "user": {
+      "username": "me",
+      "email": "me@me",
+      "password": "$2a$10$QnpPQwXfOiDb9V6gwW6odOa9zUIkSMELNdwnlnVZVdkd9ESVq6ViW",
+      "icon": null,
+      "id": "7"
+    },
+    "id": "1"
+  },
+  {
+    "date": 1726836948416,
+    "userId": "7",
+    "chatId": "2",
+    "read": false,
+    "message": "hi",
+    "user": {
+      "username": "me",
+      "email": "me@me",
+      "password": "$2a$10$QnpPQwXfOiDb9V6gwW6odOa9zUIkSMELNdwnlnVZVdkd9ESVq6ViW",
+      "icon": null,
+      "id": "7"
+    },
+    "id": "2"
+  }
 ]

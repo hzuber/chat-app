@@ -46,5 +46,12 @@
     "password": "$2a$10$QnpPQwXfOiDb9V6gwW6odOa9zUIkSMELNdwnlnVZVdkd9ESVq6ViW",
     "icon": null,
     "id": "7"
+  },
+  {
+    "username": "hannah",
+    "email": "hgomberg@gmail.com",
+    "password": "$2a$10$ST4kZeOADNzs/73kej3yaurkrCZzkd0cYG1w4kaIZ6pNE.lgCuMyS",
+    "icon": null,
+    "id": "8"
   }
 ]

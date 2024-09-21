@@ -21,24 +21,24 @@ const createSocketServer = (server) => {
     //   socket.emit("message", msg);
     // });
 
-    // Handle joining a room
-    socket.on("join-room", ({ roomId, userId }) => {
-      socket.join(roomId);
-      console.log(`${userId} joined room: ${roomId}`);
+    // Handle joining a chat
+    socket.on("join-chat", ({ chatId, userId }) => {
+      socket.join(chatId);
+      console.log(`${userId} joined chat: ${chatId}`);
     });
 
     // Handle sending a message
-    socket.on("send-message", ({ roomId, userId, message }) => {
+    socket.on("send-message", ({ chatId, userId, message, user }) => {
       const newMessage = {
         userId,
-        roomId,
+        chatId,
         message,
         date: new Date(),
         read: false,
       };
 
-      // Emit the message to the room
-      io.to(roomId).emit("receive-message", newMessage);
+      // Emit the message to the chat
+      io.to(chatId).emit("receive-message", newMessage);
     });
 
     socket.on("disconnect", () => {

@@ -17,16 +17,26 @@ export type Message = {
   id: string;
   userId: string;
   date: Date;
-  roomId: string;
+  chatId: string;
   read: boolean | null;
   message: string;
+  user: User | null;
 };
 
-export type Room = {
+// export type MessageWithUser = {
+//   message: Message;
+//   user: User;
+// };
+
+export type Chat = {
   id: string;
   members: string[] | null;
   icon: string | null;
   description: string | null;
+  title: string | null;
+  type: "group" | "private";
+  lastRead: Message | null;
+  messages: Message[] | null;
 };
 
 export type UserResponse = {

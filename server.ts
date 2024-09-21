@@ -10,6 +10,8 @@ import path from "path";
 import createSocketServer from "./socket-io.js";
 import userRoutes from "./server/users/routers.js";
 import authRoutes from "./server/auth/routers.js";
+import messageRoutes from "./server/messages/routers.js";
+import chatRoutes from "./server/chatRooms/routers.js";
 
 configDotenv();
 
@@ -41,7 +43,7 @@ configDotenv();
 
   const socket_port = 3002;
   const server = app.listen(socket_port, function () {
-    console.log("server running on port ", socket_port);
+    console.log("socket server running on port ", socket_port);
   });
   createSocketServer(server);
 
@@ -74,8 +76,10 @@ configDotenv();
 
   app.use(morgan("tiny"));
   app.use(bodyParser.json());
-  app.use("/api/users", userRoutes);
   app.use("/auth", authRoutes);
+  app.use("/api/users", userRoutes);
+  app.use("/api/messages", messageRoutes);
+  app.use("/api/chats", chatRoutes);
 
   app.all("*", remixHandler);
 

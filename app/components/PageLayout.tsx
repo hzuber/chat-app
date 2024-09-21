@@ -8,9 +8,9 @@ type Props = {
 export const PageLayout = ({ children }: Props) => {
   console.log("layout loads");
   return (
-    <div className="layout_container justify-content-between d-flex flex-column w-100">
+    <div className="layout_container justify-content-between d-flex flex-column w-100 ">
       <NavBar />
-      <div className="layout_container--inner">{children}</div>
+      <div className="layout_container--inner h-100">{children}</div>
       <Footer />
     </div>
   );

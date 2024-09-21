@@ -8,7 +8,6 @@ export const NavBar = () => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    console.log(theUser);
     if (!isUserLoading && theUser) {
       setUser(theUser);
       setIsLoading(false);

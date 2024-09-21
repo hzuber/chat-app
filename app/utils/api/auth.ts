@@ -1,23 +1,22 @@
 import { User, UserResponse } from "types";
+import bcrypt from "bcryptjs";
+
 export async function registerUser(
   username: string,
   email: string,
   password: string
 ): Promise<UserResponse> {
+  const hashedPassword = await bcrypt.hash(password, 10);
   const response = await fetch(`/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ username, email, password }),
+    body: JSON.stringify({ username, email, password: hashedPassword }),
   });
-  console.log(username, email, password, response);
-
   if (!response.ok) {
     throw new Error("Registration failed");
   }
-  console.log(response);
-
   return response.json();
 }
 
@@ -50,13 +49,11 @@ export async function validateToken(): Promise<User | null> {
     },
     // body: JSON.stringify({ id }),
   });
-  console.log("token", token, response);
 
   if (!response.ok) {
     return null;
   }
 
   const data = await response.json();
-  console.log(token, response, data);
   return data.user;
 }
