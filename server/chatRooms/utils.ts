@@ -12,9 +12,10 @@ const DB_PATH = path.resolve(__dirname, "db.chats.json");
 async function readDB() {
   try {
     const data = await fs.readFile(DB_PATH, "utf-8");
+
     return JSON.parse(data);
   } catch (err) {
-    console.error("Error reading database:", err);
+    //console.error("Error reading database:", err);
     return [];
   }
 }
@@ -24,7 +25,7 @@ async function writeDB(Chat: Chat) {
   try {
     await fs.writeFile(DB_PATH, JSON.stringify(Chat, null, 2), "utf-8");
   } catch (err) {
-    console.error("Error writing to database:", err);
+    //console.error("Error writing to database:", err);
   }
 }
 
@@ -76,6 +77,7 @@ export async function getOrCreatePrivateChat(
       members: [userId1, userId2],
       title: null,
       type: "private",
+      messages: [],
     };
     await create(chat);
   }
@@ -85,11 +87,11 @@ export async function getOrCreatePrivateChat(
 // Create a new record
 export async function create(chat: Chat) {
   const db = await readDB();
-  const lastDb: Chat = db.length > 0 ? db[db.length - 1] : 1;
-  const newId: number = parseInt(lastDb.id) + 1;
+  const lastDb: Chat = db.length > 0 ? db[db.length - 1] : null;
+  const newId: number = lastDb ? parseInt(lastDb.id) + 1 : 1;
   const newChat: Chat = {
     ...chat,
-    id: newId.toString(),
+    id: chat.id ? chat.id : newId.toString(),
   };
   db.push(newChat);
   await writeDB(db);
@@ -129,23 +131,6 @@ export async function addUserToChat(chatId: string, userId: string) {
   }
 
   return chat;
-}
-
-export async function addMessageToChat(message: Message) {
-  const db = await readDB();
-  const chat: Chat = db.find((msg: Message) => msg.id === message.chatId);
-
-  if (!chat || !chat.messages) {
-    return null;
-  }
-
-  if (!chat.messages.includes(message)) {
-    chat.messages.push(message); // Add user to the chat
-    chat.lastRead = message;
-    await writeDB(db); // Save the changes
-  }
-
-  return message;
 }
 
 // Delete a record by ID

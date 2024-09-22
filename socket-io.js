@@ -5,40 +5,51 @@ const createSocketServer = (server) => {
     connectionStateRecovery: {},
   });
 
-  // const ns2 = io.of("/ns2");
-
-  // ns2.on("connection", (socket) => {
-  //   console.log("ns2 connected", socket.id);
-  //   socket.emit("message", `Welcome to ns2 ${socket.id}`);
-  // });
-
   io.on("connection", (socket) => {
-    console.log(`A user connected ${socket.id}`);
-
-    // socket.on("message", (msg) => {
-    //   console.log("server got a message ", msg);
-
-    //   socket.emit("message", msg);
-    // });
-
-    // Handle joining a chat
-    socket.on("join-chat", ({ chatId, userId }) => {
+    socket.on("join-chat", ({ chatId }) => {
       socket.join(chatId);
-      console.log(`${userId} joined chat: ${chatId}`);
     });
 
-    // Handle sending a message
-    socket.on("send-message", ({ chatId, userId, message, user }) => {
-      const newMessage = {
-        userId,
-        chatId,
-        message,
-        date: new Date(),
-        read: false,
-      };
+    socket.on("send-message", ({ chatId, authId, message, uuid }) => {
+      // const newMessage = {
+      //   userId,
+      //   chatId,
+      //   message,
+      //   date: new Date(),
+      //   read: false,
+      // };
+      if (!chatId || !authId || !message || !uuid) {
+        console.error(
+          "Missing data for send-message event",
+          chatId,
+          authId,
+          message,
+          uuid
+        );
+        console.log(chatId, authId, message, uuid);
+        return;
+      }
+      console.log("socket receive-message", chatId, authId, message, uuid);
 
-      // Emit the message to the chat
-      io.to(chatId).emit("receive-message", newMessage);
+      io.to(chatId).emit("receive-message", { chatId, authId, message, uuid });
+    });
+
+    socket.on("message_read", ({ messageId, chatId }) => {
+      // const newMessage = {
+      //   userId,
+      //   chatId,
+      //   message,
+      //   date: new Date(),
+      //   read: false,
+      // };
+      if (!chatId || !messageId) {
+        console.error("Missing data for send-message event", messageId, chatId);
+        console.log(messageId, chatId);
+        return;
+      }
+      console.log("socket message_marked_read", messageId, chatId);
+
+      io.to(chatId).emit("message_marked_read", { messageId, chatId });
     });
 
     socket.on("disconnect", () => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 interface EditModalProps {
   isOpen: boolean;
@@ -17,9 +17,9 @@ export const EditModal: React.FC<EditModalProps> = ({
 }) => {
   const [inputValue, setInputValue] = React.useState(value);
 
-  // When modal opens, set the initial input value
-  React.useEffect(() => {
+  useEffect(() => {
     setInputValue(value);
+    console.log("modal", field, value);
   }, [value]);
 
   if (!isOpen) return null;

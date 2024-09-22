@@ -1,54 +1,47 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "username": "Alice",
     "email": "alice@example.com",
     "password": "$2a$12$kOp.nqBG2GPwfDwGSkHfPOUdGQkVhpP.lyqjnnW4JsI0drhW.IeGq",
     "icon": null
   },
   {
-    "id": 2,
+    "id": "2",
     "username": "Bob",
     "email": "bob@example.com",
     "password": "$2a$12$kOp.nqBG2GPwfDwGSkHfPOUdGQkVhpP.lyqjnnW4JsI0drhW.IeGq",
     "icon": null
   },
   {
-    "username": "test",
+    "username": "Avi",
     "email": "test",
     "password": "$2a$10$a4KnvLj7od9jkbsnkXklPOUQgh2GNLz7bpUt1KTRJ98AjwHDSszna",
     "id": "3"
   },
   {
-    "username": "me",
+    "username": "Hannah",
     "email": "me@gmail.com",
     "password": "$2a$10$cl/oJQcUznkGhXHtiSjQH.t0xPy77E9R0xioqirJ6kPxodhV9JlSW",
     "icon": null,
     "id": "4"
   },
   {
-    "username": "test",
-    "email": "test@me",
-    "password": "$2a$10$UxXiEWGq3BJTs7nK95AyoOd/at.cYysFpdsIzjxY9UNwiE47ApTg.",
-    "icon": null,
-    "id": "5"
-  },
-  {
-    "username": "ht",
+    "username": "Kira",
     "email": "ht@er",
     "password": "$2a$10$hkrHhWf.Ih35Drkq0HkuNesGghJ653SgmYNoK.CcZm/3ECY1hERt2",
     "icon": null,
     "id": "6"
   },
   {
-    "username": "me",
+    "username": "Miriam",
     "email": "me@me",
     "password": "$2a$10$QnpPQwXfOiDb9V6gwW6odOa9zUIkSMELNdwnlnVZVdkd9ESVq6ViW",
     "icon": null,
     "id": "7"
   },
   {
-    "username": "hannah",
+    "username": "Rivkah",
     "email": "hgomberg@gmail.com",
     "password": "$2a$10$ST4kZeOADNzs/73kej3yaurkrCZzkd0cYG1w4kaIZ6pNE.lgCuMyS",
     "icon": null,

@@ -17,7 +17,7 @@ async function readDB() {
     const data = await fs.readFile(DB_PATH, "utf-8");
     return JSON.parse(data);
   } catch (err) {
-    console.error("Error reading database:", err);
+    //console.error("Error reading database:", err);
     return [];
   }
 }
@@ -27,7 +27,7 @@ async function writeDB(user: User) {
   try {
     await fs.writeFile(DB_PATH, JSON.stringify(user, null, 2), "utf-8");
   } catch (err) {
-    console.error("Error writing to database:", err);
+    //console.error("Error writing to database:", err);
   }
 }
 
@@ -52,18 +52,18 @@ export async function getByEmail(email: string) {
 
 // Create a new record
 export async function create(user: CreateUser) {
-  const db = await readDB();
-  const lastDb: User = db.length > 0 ? db[db.length - 1] : 1;
-  const newId: number = parseInt(lastDb.id) + 1;
+  const db = await getAll();
+  const lastDb: User | null = db && db.length > 0 ? db[db.length - 1] : null;
+  const newId: number = !lastDb ? 1 : parseInt(lastDb.id) + 1;
   const newUser: User = {
     ...user,
     id: newId.toString(),
   };
-  db.push(newUser);
-  await writeDB(db);
+  // db.push(newUser);
+  await writeDB(newUser);
   const token = createToken(newUser);
   const res: UserResponse = { user: newUser, token, status: 200 };
-  console.log("function create", res, newUser, user);
+  //console.log("function create", res, newUser, user);
   return res;
 }
 

@@ -21,7 +21,7 @@ router.get("", async (req, res) => {
 
 // Get chat by ID
 router.get("/:id", async (req, res) => {
-  console.log("chat server route", req.params);
+  //console.log("chat server route", req.params);
   const chat = await getById(req.params.id);
   if (!chat) {
     return res.status(404).json({ chat: "Chat not found" });
@@ -44,7 +44,7 @@ router.get("/:id/messages", async (req, res) => {
 // Create a new chat
 router.post("", async (req, res) => {
   const newChat = await create(req.body);
-  console.log("newCessage is", newChat);
+  //console.log("newChat is", newChat);
   res.status(201).json(newChat);
 });
 
@@ -58,10 +58,10 @@ router.post("/:chatId/join", async (req, res) => {
 
     // Add the user to the chat
     await addUserToChat(chatId, userId);
-    console.log("server", chat);
+    //console.log("server", chat);
     return res.status(200).json(chat);
   } catch (error) {
-    console.error("Error joining chat:", error);
+    //console.error("Error joining chat:", error);
     return res.status(500).json({ error: "Internal server error" });
   }
 });
@@ -74,7 +74,7 @@ router.post("/private", async (req, res) => {
     const chat = await getOrCreatePrivateChat(userId1, userId2);
     return res.status(200).json(chat);
   } catch (error) {
-    console.error("Error joining chat:", error);
+    //console.error("Error joining chat:", error);
     return res.status(500).json({ error: "Internal server error" });
   }
 });
@@ -101,7 +101,7 @@ router.put("/:chatId", async (req, res) => {
       res.status(404).json({ error: "Chat not found" });
     }
   } catch (error) {
-    console.error(`Error updating chat ${field}:`, error);
+    //console.error(`Error updating chat ${field}:`, error);
     res.status(500).json({ error: "Internal server error" });
   }
 });

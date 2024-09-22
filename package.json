@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
-    "dev": "nodemon --watch './**/*.ts' --exec npx tsx ./server.ts",
+    "dev": " npx tsx ./server.ts",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "cross-env NODE_ENV=production ts-node ./server.ts",
     "typecheck": "tsc"
@@ -17,6 +17,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
     "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "compression": "^1.7.4",
     "dotenv": "^16.4.5",
     "express": "^4.18.2",
@@ -27,9 +28,11 @@
     "node-ts": "^6.1.2",
     "nodemon": "^3.1.6",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.4",
     "react-dom": "^18.2.0",
     "socket.io": "^4.7.5",
-    "socket.io-client": "^4.7.5"
+    "socket.io-client": "^4.7.5",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.9.2",
@@ -40,6 +43,7 @@
     "@types/morgan": "^1.9.9",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
     "cross-env": "^7.0.3",

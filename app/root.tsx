@@ -12,6 +12,10 @@ import { Suspense } from "react";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: "/app/root.css" },
+  {
+    rel: "stylesheet",
+    href: "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css",
+  },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -37,7 +41,6 @@ const Loading = () => {
 };
 
 export default function App() {
-  console.log("app loads");
   return (
     <Suspense fallback={<Loading />}>
       <SocketProvider>

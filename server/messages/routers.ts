@@ -1,5 +1,5 @@
 import express from "express";
-import { getAll, getById, remove, update, create } from "./utils";
+import { getAll, getById, remove, update, create, markRead } from "./utils";
 import { getChat } from "~/utils/api/chats";
 
 const router = express.Router();
@@ -24,7 +24,7 @@ router.get("/:id", async (req, res) => {
 // Create a new message
 router.post("", async (req, res) => {
   const newMessage = await create(req.body);
-  console.log("newmessage is", newMessage);
+  //console.log("newmessage is", newMessage);
   res.status(201).json(newMessage);
   return newMessage;
 });
@@ -35,6 +35,24 @@ router.put("/:id", async (req, res) => {
 
   try {
     const updatedMessage = await update(id, req.body);
+    console.log("put ", id, req.body);
+    res.json(updatedMessage);
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error
+        ? error.message
+        : "An unexpected error occurred when creating a project";
+    res.status(404).json({ message: errorMessage });
+  }
+});
+
+router.put("/read/:messageid/:chatid", async (req, res) => {
+  const messageId = req.params.messageid;
+  const chatId = req.params.chatid;
+
+  try {
+    const updatedMessage = await markRead(messageId, chatId);
+    console.log("put ", messageId, req.body);
     res.json(updatedMessage);
   } catch (error) {
     const errorMessage =

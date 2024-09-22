@@ -14,6 +14,7 @@ export type CreateUser = {
 };
 
 export type Message = {
+  uuid: string;
   id: string;
   userId: string;
   date: Date;
@@ -22,11 +23,6 @@ export type Message = {
   message: string;
   user: User | null;
 };
-
-// export type MessageWithUser = {
-//   message: Message;
-//   user: User;
-// };
 
 export type Chat = {
   id: string;
@@ -43,4 +39,12 @@ export type UserResponse = {
   user: User;
   status: number;
   token: string;
+};
+
+export type userChat = {
+  isUser: boolean;
+  id: string;
+  name: string | null;
+  user: User | null;
+  chat: Chat | null;
 };

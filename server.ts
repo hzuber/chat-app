@@ -43,17 +43,17 @@ configDotenv();
 
   const socket_port = 3002;
   const server = app.listen(socket_port, function () {
-    console.log("socket server running on port ", socket_port);
+    //console.log("socket server running on port ", socket_port);
   });
   createSocketServer(server);
 
   io.on("connection", (socket) => {
-    console.log(socket.id, "connected");
+    //console.log(socket.id, "connected");
 
     socket.emit("confirmation", "connected!");
 
     socket.on("event", (data) => {
-      console.log(socket.id, data);
+      //console.log(socket.id, data);
       socket.emit("event", "pong");
     });
   });
@@ -86,6 +86,6 @@ configDotenv();
   const port = 3000;
 
   httpServer.listen(port, () => {
-    console.log(`Express server listening at http://localhost:${port}`);
+    //console.log(`Express server listening at http://localhost:${port}`);
   });
 })();
