@@ -5,7 +5,7 @@ const apiRoute = `http://localhost:${port}/api/chats`;
 
 export async function getChats() {
   try {
-    const response = await fetch("/api/chats", {
+    const response = await fetch(apiRoute, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

@@ -1,13 +1,65 @@
 [
   {
     "members": [
+      "1",
+      "7"
+    ],
+    "title": null,
+    "type": "private",
+    "messages": [
+      {
+        "date": 1727006755464,
+        "userId": "7",
+        "chatId": "1",
+        "read": false,
+        "message": "fujc",
+        "user": null,
+        "uuid": "8440b3ce-e825-4a64-935b-f9f37d849daa",
+        "id": "1"
+      }
+    ],
+    "id": "1",
+    "lastRead": {
+      "date": 1727006755464,
+      "userId": "7",
+      "chatId": "1",
+      "read": false,
+      "message": "fujc",
+      "user": null,
+      "uuid": "8440b3ce-e825-4a64-935b-f9f37d849daa",
+      "id": "1"
+    }
+  },
+  {
+    "members": [
       "2",
       "7"
     ],
     "title": null,
     "type": "private",
-    "messages": [],
-    "id": "1"
+    "messages": [
+      {
+        "date": 1727006758540,
+        "userId": "7",
+        "chatId": "2",
+        "read": false,
+        "message": "ngh",
+        "user": null,
+        "uuid": "4e7db0c5-f663-4067-9ae9-e9edb973e8d8",
+        "id": "2"
+      }
+    ],
+    "id": "2",
+    "lastRead": {
+      "date": 1727006758540,
+      "userId": "7",
+      "chatId": "2",
+      "read": false,
+      "message": "ngh",
+      "user": null,
+      "uuid": "4e7db0c5-f663-4067-9ae9-e9edb973e8d8",
+      "id": "2"
+    }
   },
   {
     "members": [
@@ -16,18 +68,29 @@
     ],
     "title": null,
     "type": "private",
-    "messages": [],
-    "id": "2"
-  },
-  {
-    "members": [
-      "3",
-      "7"
+    "messages": [
+      {
+        "date": 1727006762530,
+        "userId": "7",
+        "chatId": "3",
+        "read": false,
+        "message": "nhf",
+        "user": null,
+        "uuid": "a3c38001-e62f-465b-bc56-66f95311d335",
+        "id": "3"
+      }
     ],
-    "title": null,
-    "type": "private",
-    "messages": [],
-    "id": "3"
+    "id": "3",
+    "lastRead": {
+      "date": 1727006762530,
+      "userId": "7",
+      "chatId": "3",
+      "read": false,
+      "message": "nhf",
+      "user": null,
+      "uuid": "a3c38001-e62f-465b-bc56-66f95311d335",
+      "id": "3"
+    }
   },
   {
     "members": [
