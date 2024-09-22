@@ -19,7 +19,6 @@ export const EditModal: React.FC<EditModalProps> = ({
 
   useEffect(() => {
     setInputValue(value);
-    console.log("modal", field, value);
   }, [value]);
 
   if (!isOpen) return null;

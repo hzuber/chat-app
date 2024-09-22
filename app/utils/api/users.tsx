@@ -15,7 +15,6 @@ export async function getUsers() {
     const data: User[] = await response.json();
     return data;
   } catch (err) {
-    //console.log(err);
     return null;
   }
 }
@@ -46,11 +45,9 @@ export async function deleteUser(userId: string) {
   }
 
   const allChats = await getAllChats();
-  console.log("remove user", userId, allChats);
   allChats &&
     allChats.map(async (chat) => {
       if (chat.type === "private" && chat.members?.find((m) => m === userId)) {
-        console.log("delete this one", chat);
         await deleteChat(chat.id);
       }
     });

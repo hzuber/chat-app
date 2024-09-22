@@ -32,16 +32,13 @@ const Signup = () => {
     } else {
       try {
         const { user, token } = await registerUser(username, email, password);
-        // const users = await getUsers();
         login(user, token);
-        //console.log(user, token, users);
         setMessage("Signup successful! Redirecting to login...");
         setTimeout(() => {
-          navigate("/"); // Redirect to login page after signup
+          navigate("/");
         }, 2000);
       } catch (err) {
-        // setMessage(error.response?.data?.message || "Signup failed");
-        //console.log(err);
+        console.log(err);
       }
     }
   };

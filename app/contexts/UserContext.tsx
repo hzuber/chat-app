@@ -6,7 +6,6 @@ import {
   useEffect,
 } from "react";
 import { useNavigate, useLocation } from "@remix-run/react";
-import { Socket, io } from "socket.io-client";
 import {
   fetchOrCreatePrivateChat,
   getChats as getAllChats,
@@ -41,8 +40,6 @@ export const UserProvider = ({ children }: Props) => {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
 
-  // console.log("context ran", chats);
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -65,7 +62,7 @@ export const UserProvider = ({ children }: Props) => {
 
   useEffect(() => {
     const fetchChatsAndUsers = async () => {
-      const newChats: Chat[] = []; // Store new chats temporarily
+      const newChats: Chat[] = [];
       const controller = new AbortController();
       try {
         const chats = await getAllChats();
@@ -74,17 +71,13 @@ export const UserProvider = ({ children }: Props) => {
           const userChats = chats.filter((chat: Chat) =>
             chat.members?.includes(user.id)
           );
-          //console.log("newChats", newChats);
           newChats.push(...userChats);
         }
         if (user && users) {
           for (const u of users) {
             const chat = await fetchOrCreatePrivateChat(u.id, user.id);
-            const duplicateChat = newChats.find((nc) => nc.id == chat.id);
-            //console.log(duplicateChat, "duplicateChat");
             if (chat) {
-              //console.log("fetchOrCreatePrivateChat", chat);
-              newChats.push(chat); // Add private chats
+              newChats.push(chat);
             }
           }
         }
@@ -94,7 +87,7 @@ export const UserProvider = ({ children }: Props) => {
 
         return chats;
       } catch (error) {
-        //console.error("Error fetching chats and users:", error);
+        console.error("Error fetching chats and users:", error);
       }
       return () => controller.abort();
     };
@@ -118,7 +111,7 @@ export const UserProvider = ({ children }: Props) => {
         return chatRoom;
       }
     } catch (error) {
-      //console.error("Error creating/fetching chat room", error);
+      console.error("Error creating/fetching chat room", error);
       return null;
     }
   };
@@ -138,8 +131,6 @@ export const UserProvider = ({ children }: Props) => {
     const publicRoutes = ["/", "/signup", "/login"];
     return publicRoutes.includes(pathname) || pathname.startsWith("/chat/");
   };
-
-  //console.log("checkContext", chats);
   return (
     <UserContext.Provider
       value={{

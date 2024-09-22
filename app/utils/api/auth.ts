@@ -47,7 +47,6 @@ export async function validateToken(): Promise<User | null> {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    // body: JSON.stringify({ id }),
   });
 
   if (!response.ok) {

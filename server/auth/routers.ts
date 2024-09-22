@@ -15,7 +15,6 @@ interface AuthRequest extends express.Request {
 
 router.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
-  //console.log("reg", username, email, password);
 
   const existingUser = await getByEmail(email);
   if (existingUser) {
@@ -28,12 +27,10 @@ router.post("/register", async (req, res) => {
     password,
     icon: null,
   }).then((res) => res.user);
-  //console.log("reg", user);
   const token = jwt.sign(
     { userId: user.id },
     process.env.VITE_JWT_SECRET as string
   );
-  //console.log("reg", token);
   res.json({
     user: {
       id: user.id,
@@ -72,7 +69,6 @@ router.post("/validate", async (req: AuthRequest, res) => {
     ) as {
       userId: string;
     };
-    //console.log("validate", req.body);
     const user = decoded.userId && (await getById(decoded.userId));
     if (!user) {
       return res.status(404).send("User not found");

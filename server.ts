@@ -5,7 +5,6 @@ import compression from "compression";
 import express from "express";
 import morgan from "morgan";
 import bodyParser from "body-parser";
-import { Server } from "socket.io";
 import path from "path";
 import createSocketServer from "./socket-io.js";
 import userRoutes from "./server/users/routers.js";
@@ -25,12 +24,6 @@ configDotenv();
           })
         );
 
-  // await import("vite").then((vite) =>
-  //   vite.createServer({
-  //     server: { middlewareMode: true },
-  //   })
-  // );
-
   const remixHandler = createRequestHandler({
     build: viteDevServer
       ? () => viteDevServer.ssrLoadModule("virtual:remix/server-build")
@@ -39,24 +32,10 @@ configDotenv();
 
   const app = express();
   const httpServer = createServer(app);
-  const io = new Server(httpServer);
 
-  const socket_port = 3002;
-  const server = app.listen(socket_port, function () {
-    //console.log("socket server running on port ", socket_port);
-  });
+  const socket_port = process.env.VITE_SOCKET_PORT || 3002;
+  const server = app.listen(socket_port, function () {});
   createSocketServer(server);
-
-  io.on("connection", (socket) => {
-    //console.log(socket.id, "connected");
-
-    socket.emit("confirmation", "connected!");
-
-    socket.on("event", (data) => {
-      //console.log(socket.id, data);
-      socket.emit("event", "pong");
-    });
-  });
 
   app.use(compression());
 
@@ -83,9 +62,9 @@ configDotenv();
 
   app.all("*", remixHandler);
 
-  const port = 3000;
+  const port = process.env.VITE_PORT || 3000;
 
   httpServer.listen(port, () => {
-    //console.log(`Express server listening at http://localhost:${port}`);
+    console.log(`Express server listening at http://localhost:${port}`);
   });
 })();

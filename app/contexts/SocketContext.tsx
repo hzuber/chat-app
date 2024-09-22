@@ -10,8 +10,9 @@ interface Props {
 }
 
 const SocketContext = createContext<SocketContext | undefined>(undefined);
+const port = import.meta.env.VITE_SOCKET_PORT || 3002;
 
-const socket = io("http://localhost:" + 3002, {
+const socket = io("http://localhost:" + port, {
   transports: ["websocket"],
 });
 

@@ -11,13 +11,6 @@ const createSocketServer = (server) => {
     });
 
     socket.on("send-message", ({ chatId, authId, message, uuid }) => {
-      // const newMessage = {
-      //   userId,
-      //   chatId,
-      //   message,
-      //   date: new Date(),
-      //   read: false,
-      // };
       if (!chatId || !authId || !message || !uuid) {
         console.error(
           "Missing data for send-message event",
@@ -26,29 +19,16 @@ const createSocketServer = (server) => {
           message,
           uuid
         );
-        console.log(chatId, authId, message, uuid);
         return;
       }
-      console.log("socket receive-message", chatId, authId, message, uuid);
-
       io.to(chatId).emit("receive-message", { chatId, authId, message, uuid });
     });
 
     socket.on("message_read", ({ messageId, chatId }) => {
-      // const newMessage = {
-      //   userId,
-      //   chatId,
-      //   message,
-      //   date: new Date(),
-      //   read: false,
-      // };
       if (!chatId || !messageId) {
         console.error("Missing data for send-message event", messageId, chatId);
-        console.log(messageId, chatId);
         return;
       }
-      console.log("socket message_marked_read", messageId, chatId);
-
       io.to(chatId).emit("message_marked_read", { messageId, chatId });
     });
 

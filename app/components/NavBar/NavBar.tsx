@@ -28,7 +28,7 @@ export const NavBar = () => {
     <nav className="container-fluid py-2 px-4">
       <ul className="w-100 d-flex justify-content-between align-items-center list-unstyled">
         {/* Display the username if the user is not loading */}
-        <li>{!isLoading && theUser?.username}</li>
+        <li>{!isLoading && <h6>Hi {theUser?.username}!</h6>}</li>
 
         {/* Dropdown button */}
         <Dropdown>

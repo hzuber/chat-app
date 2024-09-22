@@ -6,7 +6,6 @@ import { FindChats } from "~/contexts/UserContext";
 
 export default function Index() {
   const { chats } = FindChats();
-  //console.log("chats", chats);
   const isMobile = useScreenWidth();
   const matches = useMatches();
   const isChildRoute = matches.some((match) => match.params["chatId"]);

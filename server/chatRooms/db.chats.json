@@ -1,1 +1,92 @@
-[]
+[
+  {
+    "members": [
+      "1",
+      "7"
+    ],
+    "title": null,
+    "type": "private",
+    "messages": [],
+    "id": "1"
+  },
+  {
+    "members": [
+      "2",
+      "7"
+    ],
+    "title": null,
+    "type": "private",
+    "messages": [],
+    "id": "2"
+  },
+  {
+    "members": [
+      "3",
+      "7"
+    ],
+    "title": null,
+    "type": "private",
+    "messages": [],
+    "id": "3"
+  },
+  {
+    "members": [
+      "4",
+      "7"
+    ],
+    "title": null,
+    "type": "private",
+    "messages": [],
+    "id": "4"
+  },
+  {
+    "members": [
+      "6",
+      "7"
+    ],
+    "title": null,
+    "type": "private",
+    "messages": [],
+    "id": "5"
+  },
+  {
+    "members": [
+      "8",
+      "7"
+    ],
+    "title": null,
+    "type": "private",
+    "messages": [],
+    "id": "6"
+  },
+  {
+    "date": 1727005124168,
+    "userId": "7",
+    "chatId": "3",
+    "read": false,
+    "message": "הכק",
+    "user": null,
+    "uuid": "63e08ef3-708c-4745-aef9-363d32baa209",
+    "id": "7"
+  },
+  {
+    "date": 1727005137676,
+    "userId": "7",
+    "chatId": "1",
+    "read": false,
+    "message": "ngf",
+    "user": null,
+    "uuid": "87596abf-ed26-464a-b170-511bccac0b42",
+    "id": "8"
+  },
+  {
+    "date": 1727005143202,
+    "userId": "7",
+    "chatId": "4",
+    "read": false,
+    "message": "bd",
+    "user": null,
+    "uuid": "5af59dac-25a2-4011-8053-ef66c8d83f9f",
+    "id": "9"
+  }
+]

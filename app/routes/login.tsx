@@ -10,7 +10,6 @@ export default function Login() {
   const [error, setError] = useState<string | null>(null);
   const { user, login } = FindUser();
   const navigate = useNavigate();
-  //console.log("login");
 
   useEffect(() => {
     if (user) {

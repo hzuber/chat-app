@@ -14,6 +14,10 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: "/app/root.css" },
   {
     rel: "stylesheet",
+    href: "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css",
+  },
+  {
+    rel: "stylesheet",
     href: "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css",
   },
 ];

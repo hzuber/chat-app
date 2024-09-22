@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { Chat } from "../../../types";
-// import { fetchOrCreatePrivateChat, getChat, joinChat } from "~/utils/api/chats";
-// import { userChat } from "./ListedChats";
-import { FindChats, FindUser } from "~/contexts/UserContext";
+import { FindUser } from "~/contexts/UserContext";
 import { getUserById } from "~/utils/api/users";
-import { useNavigate } from "@remix-run/react";
-import { fetchOrCreatePrivateChat, joinChat } from "~/utils/api/chats";
 
 interface Props {
   chat: Chat;
@@ -14,12 +10,9 @@ interface Props {
 
 export default function ListItem({ chat, handleClick }: Props) {
   const { user } = FindUser();
-  const { setActiveChat, activeChat } = FindChats();
   const [name, setName] = useState<string | null>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    // console.log("chat useeffect", chat);
     const findOtherUser = async () => {
       try {
         if (chat) {
@@ -33,7 +26,6 @@ export default function ListItem({ chat, handleClick }: Props) {
           return null;
         }
       } catch (error) {
-        //console.log(error);
         return null;
       }
     };
@@ -47,7 +39,6 @@ export default function ListItem({ chat, handleClick }: Props) {
     } else {
       chat.title && chat.title.length > 0 && setName(chat.title);
     }
-    console.log("li changed", chat);
   }, [chat, user]);
 
   return (

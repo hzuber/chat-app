@@ -1,8 +1,8 @@
-import { getById as getUserById } from "server/users/utils";
 import { v4 as uuidv4 } from "uuid";
 import { User, Message } from "types";
 
-const apiRoute = "http://localhost:3000/api/messages";
+const port = import.meta.env.VITE_PORT || 3000;
+const apiRoute = `http://localhost:${port}/api/chats`;
 
 export async function getMessages() {
   const response = await fetch(apiRoute, {
@@ -40,16 +40,12 @@ export async function getMessageByUuid(uuid: string) {
 }
 
 export async function getMessagesByChat(chatId: string) {
-  //console.log("getMessagesByChat", chatId);
-  const response = await fetch(
-    `http://localhost:3000/api/chats/${chatId}/messages`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const response = await fetch(`${apiRoute}/${chatId}/messages`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
   if (!response.ok) {
     return [];
   }
@@ -82,14 +78,11 @@ export async function createMessage(
       uuid: getUuid,
     }),
   });
-  console.log("api call", date, userId, chatId, read, message, response);
 
   if (!response.ok) {
-    console.log("Create Message failed");
     return null;
   }
   const data = await response.json();
-  console.log("api call response", data);
 
   return data;
 }
@@ -107,12 +100,9 @@ export async function markMessageRead(
   });
 
   if (!response || !response.ok) {
-    console.log(`Failed to update ${messageId}, response ${response}`);
     return null;
   }
   const message = await response.json();
-  //   console.log("response, response", message);
-  //   console.log(`end update ${messageId},${message}`);
 
   return message;
 }

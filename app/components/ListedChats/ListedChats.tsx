@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "@remix-run/react";
 import { FindChats, FindUser } from "~/contexts/UserContext";
-import { fetchOrCreatePrivateChat, joinChat } from "~/utils/api/chats";
+import { joinChat } from "~/utils/api/chats";
 import { Chat } from "types";
 import ListItem from "./ListItem";
 
@@ -10,9 +10,7 @@ export default function ListedChats() {
   const { user } = FindUser();
   const [theChats, setTheChats] = useState<Chat[] | null>();
   const navigate = useNavigate();
-  console.log("listed", chats);
   useEffect(() => {
-    const newChats = chats;
     const sortedChats =
       chats &&
       chats.sort((a, b) => {
@@ -22,25 +20,17 @@ export default function ListedChats() {
         );
       });
     setTheChats(sortedChats);
-    console.log("chats changed", chats, newChats);
   }, [chats]);
-  console.log(chats, theChats);
 
   const handleClick = (chat: Chat) => {
     setActiveChat(chat);
-    //console.log("click", activeChat, chat);
     join(chat);
     navigate(`/chat/${chat.id}`);
   };
 
   const join = async (chat: Chat) => {
-    //console.log("join fxn", chat);
     if (chat.type === "group") {
       user && (await joinChat(chat.id, user.id));
-    } else {
-      user &&
-        chat.members?.length === 2 &&
-        (await fetchOrCreatePrivateChat(chat.members[0], chat.members[1]));
     }
   };
 
