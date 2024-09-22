@@ -4,6 +4,12 @@
 
 ## Development
 
+add an .env file containing the following variables:
+VITE_NODE_ENV = "dev"
+VITE_PORT = 3000
+VITE_JWT_SECRET = "here's a secret"
+VITE_SOCKET_PORT = 3002
+
 Run the dev server:
 
 ```shellscript

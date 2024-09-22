@@ -7,7 +7,7 @@
     "build": "remix vite:build",
     "dev": " npx tsx ./server.ts",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "start": "cross-env NODE_ENV=production ts-node ./server.ts",
+    "start": "cross-env NODE_ENV=production npx tsx  ./server.ts",
     "typecheck": "tsc"
   },
   "dependencies": {

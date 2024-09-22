@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { User, Message } from "types";
 
 const port = import.meta.env.VITE_PORT || 3000;
-const apiRoute = `http://localhost:${port}/api/chats`;
+const apiRoute = `http://localhost:${port}/api/messages`;
 
 export async function getMessages() {
   const response = await fetch(apiRoute, {
